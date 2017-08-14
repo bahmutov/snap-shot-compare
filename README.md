@@ -42,11 +42,11 @@ result = compare({
 //*
 {
   valid: false
-  message: 'snapshot difference
+  message: `snapshot difference
 {
 - foo: "foo"
 + bar: "bar"
-}'
+}`
 }
 */
 ```
