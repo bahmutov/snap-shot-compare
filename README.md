@@ -8,6 +8,11 @@
 [![semantic-release][semantic-image] ][semantic-url]
 [![js-standard-style][standard-image]][standard-url]
 
+## Why
+
+Use this comparator function with
+[snap-shot-core](https://github.com/bahmutov/snap-shot-core)
+
 ## Install
 
 Requires [Node](https://nodejs.org/en/) version 6 or above.
@@ -17,6 +22,41 @@ npm install --save snap-shot-compare
 ```
 
 ## Use
+
+```js
+const compare = require('snap-shot-compare')
+let result
+// if values are equal
+result = compare({
+  expected: 42,
+  value: 100
+})
+// result is {valid: true}
+// if objects are different
+result = compare({
+  expected: {foo: 'foo'},
+  value: {bar: 'bar'}
+})
+// result has ANSI characters
+// use "strip-ansi" to remove if desired
+//*
+{
+  valid: false
+  message: 'snapshot difference
+{
+- foo: "foo"
++ bar: "bar"
+}'
+}
+*/
+```
+
+Uses
+
+* [variable-diff](https://github.com/taylorhakes/variable-diff) to show diff
+  between two objects
+* [disparity](https://github.com/millermedeiros/disparity) to show diff
+  between multi line text
 
 ### Small print
 
