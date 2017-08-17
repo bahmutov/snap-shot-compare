@@ -10,14 +10,19 @@ const areStrings = (s, t) => is.string(s) && is.string(t)
 const compareAsStrings = (s, t) =>
   areStrings(s, t) && (isMultiLineText(s) || isMultiLineText(t))
 
+function cleanupDisparityDiff (text) {
+  return text.replace(' No newline at end of file', '')
+}
+
 function compareText (expected, value) {
   const textDiff = disparity.unified(expected, value)
   if (!textDiff) {
     return { changed: false }
   }
+
   return {
     changed: true,
-    text: textDiff
+    text: cleanupDisparityDiff(textDiff)
   }
 }
 
