@@ -11,17 +11,14 @@ function removeExplanation (text) {
     .filter(x => !x.includes('--- removed'))
     .filter(x => !x.includes('+++ added'))
     .filter(x => !x.includes('@@ '))
+    .filter(x => !x.includes('No newline at end of file'))
     .join('\n')
-}
-function cleanupDisparityDiff (text) {
-  return text.replace('\\ No newline at end of file', '').trim()
+    .trim()
 }
 
 function compareText (expected, value) {
   const textDiff = disparity.unified(expected, value)
-  return textDiff
-    ? Result.Error(removeExplanation(cleanupDisparityDiff(textDiff)))
-    : Result.Ok()
+  return textDiff ? Result.Error(removeExplanation(textDiff)) : Result.Ok()
 }
 
 const raise = () => {

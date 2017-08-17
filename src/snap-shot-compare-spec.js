@@ -43,6 +43,7 @@ describe('snap-shot-compare', () => {
       third line is new
     `
     const result = snapShotCompare({ expected, value })
-    result.map(raise).orElse(x => asResult(stripAnsi(x))).map(snapshot)
+    const withoutAnsi = result.map(raise).orElse(x => asResult(stripAnsi(x)))
+    withoutAnsi.map(snapshot)
   })
 })
