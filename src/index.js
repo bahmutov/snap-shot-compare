@@ -33,7 +33,7 @@ function compare ({ expected, value }) {
     ? compareText(expected + '\n', value + '\n')
     : compareObjects(expected, value)
   if (diffed.changed) {
-    return Result.Error(`snapshot difference\n${diffed.text}`)
+    return Result.Error(diffed.text)
   }
   return Result.Ok()
 }
