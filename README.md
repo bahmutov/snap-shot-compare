@@ -23,40 +23,43 @@ npm install --save snap-shot-compare
 
 ## Use
 
+Compare returns a [Folktale.Result][Folktale.Result] object.
+
 ```js
 const compare = require('snap-shot-compare')
 let result
 // if values are equal
-result = compare({
+compare({
   expected: 42,
   value: 100
-})
-// result is {valid: true}
+}).map(console.log)
+// prints undefined
+
 // if objects are different
-result = compare({
+compare({
   expected: {foo: 'foo'},
   value: {bar: 'bar'}
-})
+}).orElse(console.log)
 // result has ANSI characters
 // use "strip-ansi" to remove if desired
 //*
-{
-  valid: false
-  message: `snapshot difference
+snapshot difference
 {
 - foo: "foo"
 + bar: "bar"
-}`
 }
 */
 ```
 
 Uses
 
+* [Folktale.Result][Folktale.Result]
 * [variable-diff](https://github.com/taylorhakes/variable-diff) to show diff
   between two objects
 * [disparity](https://github.com/millermedeiros/disparity) to show diff
   between multi line text
+
+[Folktale.Result]: http://folktale.origamitower.com/api/v2.0.0/en/folktale.result.html
 
 ### Small print
 

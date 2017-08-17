@@ -3,6 +3,7 @@
 const diff = require('variable-diff')
 const disparity = require('disparity')
 const is = require('check-more-types')
+const Result = require('folktale/result')
 
 const isMultiLineText = s => is.string(s) && s.includes('\n')
 const areStrings = (s, t) => is.string(s) && is.string(t)
@@ -27,14 +28,9 @@ function compare ({ expected, value }) {
     ? compareText(expected + '\n', value + '\n')
     : compareObjects(expected, value)
   if (diffed.changed) {
-    return {
-      valid: false,
-      message: `snapshot difference\n${diffed.text}`
-    }
+    return Result.Error(`snapshot difference\n${diffed.text}`)
   }
-  return {
-    valid: true
-  }
+  return Result.Ok()
 }
 
 // eslint-disable-next-line immutable/no-mutation
