@@ -5,20 +5,10 @@ const is = require('check-more-types')
 const snapshot = require('snap-shot-it')
 const stripAnsi = require('strip-ansi')
 const { stripIndent } = require('common-tags')
-const Result = require('folktale/result')
+const { isUndefined, raise, asResult } = require('./utils')
 
 /* eslint-env mocha */
 const snapShotCompare = require('.')
-
-const raise = () => {
-  throw new Error('should not happen')
-}
-
-const isUndefined = x => {
-  la(is.not.defined(x))
-}
-
-const asResult = x => Result.of(x)
 
 describe('snap-shot-compare', () => {
   it('is a function', () => {
