@@ -59,6 +59,8 @@ Uses
 * [disparity](https://github.com/millermedeiros/disparity) to show diff
   between multi line text
 
+For longer text fragments, prints "expected" and "actual" values when showing the difference.
+
 [Folktale.Result]: http://folktale.origamitower.com/api/v2.0.0/en/folktale.result.html
 
 ### Small print

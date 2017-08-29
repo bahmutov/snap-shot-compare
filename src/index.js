@@ -10,11 +10,21 @@ const areStrings = (s, t) => is.string(s) && is.string(t)
 const compareAsStrings = (s, t) =>
   areStrings(s, t) && (isMultiLineText(s) || isMultiLineText(t))
 
+// looks at number of lines
+const isLong = s => s.split('\n').length > 9
+
+const diffAsLongText = (s, t) =>
+  compareAsStrings(s, t) && (isLong(s) || isLong(t))
+
 const compareObjects = diff
 
 function compare ({ expected, value }) {
   if (compareAsStrings(value, expected)) {
-    return utils.compareText(value, expected)
+    if (diffAsLongText(value, expected)) {
+      return utils.compareLongText(value, expected)
+    } else {
+      return utils.compareText(value, expected)
+    }
   }
   const diffed = compareObjects(expected, value)
   if (diffed.changed) {
