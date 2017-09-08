@@ -3,13 +3,13 @@ exports['disparity diffs multiple text 1'] = `line 1
 [32m+line 2b[39m
  line 3`
 
-exports['disparity diffs long text 1'] = `Expected text
+exports['disparity diffs long text 1'] = `Saved snapshot text
 --------------
 line 1
 line 2
 line 3
 --------------
-Actual text
+Current text
 --------------
 line 1
 line 2b

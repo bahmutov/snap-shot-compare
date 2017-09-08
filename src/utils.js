@@ -21,19 +21,19 @@ function compareText (expected, value) {
   return textDiff ? Result.Error(removeExplanation(textDiff)) : Result.Ok()
 }
 
-function compareLongText (expected, value) {
-  if (expected === value) {
+function compareLongText (snapshotValue, value) {
+  if (snapshotValue === value) {
     return Result.Ok()
   }
 
   const hr = '--------------\n'
   const diff =
-    'Expected text\n' +
+    'Saved snapshot text\n' +
     hr +
-    expected +
+    snapshotValue +
     '\n' +
     hr +
-    'Actual text\n' +
+    'Current text\n' +
     hr +
     value +
     '\n' +
