@@ -21,7 +21,7 @@ const compareObjects = diff
 function compare ({ expected, value }) {
   if (compareAsStrings(value, expected)) {
     if (diffAsLongText(value, expected)) {
-      return utils.compareLongText(value, expected)
+      return utils.compareLongText(expected, value)
     } else {
       return utils.compareText(value, expected)
     }
