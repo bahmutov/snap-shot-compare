@@ -51,7 +51,7 @@ snapshot difference
 */
 ```
 
-### Other option
+### Other options
 
 There are a few secondary options that might not be consistent across all
 comparison modes (open a GitHub issue if an unexpected behavior is found)
@@ -60,9 +60,10 @@ comparison modes (open a GitHub issue if an unexpected behavior is found)
 compare({
   expected,
   value,
-  noColor, // strip ASCII color from diff message
-  json // return error result as JSON object with following properties
-  // {message, expected, value}
+  noColor,  // strips ASCII color from diff message
+  json      // returns error result as JSON object
+            // with the following properties
+            // {message, expected, value}
 })
 ```
 
