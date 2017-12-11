@@ -13,12 +13,41 @@ function removeExplanation (text) {
     .filter(x => !x.includes('@@ '))
     .filter(x => !x.includes('No newline at end of file'))
     .join('\n')
-    .trim()
+    .replace(/\n+$/, '\n')
 }
 
-function compareText (expected, value) {
-  const textDiff = disparity.unified(expected, value)
-  return textDiff ? Result.Error(removeExplanation(textDiff)) : Result.Ok()
+function textDifference (expected, value, noColor) {
+  const diff = noColor ? disparity.unifiedNoColor : disparity.unified
+  const textDiff = diff(expected, value)
+  return removeExplanation(textDiff)
+}
+
+function compareText (expected, value, noColor) {
+  const textDiff = textDifference(expected, value, noColor)
+  return textDiff ? Result.Error(textDiff) : Result.Ok()
+}
+
+function repeat (c, n) {
+  let s = ''
+  for (let k = 0; k < n; k += 1) {
+    s += c
+  }
+  return s
+}
+
+function header (text) {
+  la(is.unemptyString(text), 'missing header text', text)
+  const n = text.length
+  const hr = repeat('-', n)
+  return hr + '\n' + text + '\n' + hr + '\n'
+}
+
+function maybeEndNewLine (text) {
+  if (text.endsWith('\n')) {
+    return ''
+  } else {
+    return '\n'
+  }
 }
 
 function compareLongText (snapshotValue, value) {
@@ -26,18 +55,20 @@ function compareLongText (snapshotValue, value) {
     return Result.Ok()
   }
 
-  const hr = '--------------\n'
+  const textDiff = textDifference(snapshotValue, value, true)
+
   const diff =
-    'Saved snapshot text\n' +
-    hr +
+    '\n' +
+    header('Difference') +
+    textDiff +
+    maybeEndNewLine(textDiff) +
+    header('Saved snapshot text') +
     snapshotValue +
-    '\n' +
-    hr +
-    'Current text\n' +
-    hr +
+    maybeEndNewLine(snapshotValue) +
+    header('Current text') +
     value +
-    '\n' +
-    hr
+    maybeEndNewLine(value) +
+    header('Diff end')
 
   return Result.Error(diff)
 }

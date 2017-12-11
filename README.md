@@ -51,7 +51,7 @@ snapshot difference
 */
 ```
 
-Uses
+### Uses
 
 * [Folktale.Result][Folktale.Result]
 * [variable-diff](https://github.com/taylorhakes/variable-diff) to show diff
