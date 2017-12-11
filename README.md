@@ -67,6 +67,7 @@ compare({
 })
 ```
 
+Note: `json = true` option means `noColor = true` automatically.
 ### Uses
 
 * [Folktale.Result][Folktale.Result]

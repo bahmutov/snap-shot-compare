@@ -31,6 +31,24 @@ describe('snap-shot-compare', () => {
     result.map(raise).orElse(x => asResult(stripAnsi(x))).map(snapshot)
   })
 
+  it('works for different objects with json option', () => {
+    const result = snapShotCompare({
+      expected: { foo: 'foo' },
+      value: { bar: 'bar' },
+      json: true
+    })
+    result.map(raise).orElse(x => asResult(stripAnsi(x))).map(snapshot)
+  })
+
+  it('works for different objects with noColor option', () => {
+    const result = snapShotCompare({
+      expected: { foo: 'foo' },
+      value: { bar: 'bar' },
+      noColor: true
+    })
+    result.map(raise).orElse(snapshot)
+  })
+
   it('works for text', () => {
     const expected = stripIndent`
       line 1
