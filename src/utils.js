@@ -22,9 +22,19 @@ function textDifference (expected, value, noColor) {
   return removeExplanation(textDiff)
 }
 
-function compareText (expected, value, noColor) {
+function compareText (expected, value, noColor, json) {
   const textDiff = textDifference(expected, value, noColor)
-  return textDiff ? Result.Error(textDiff) : Result.Ok()
+  if (!textDiff) {
+    return Result.Ok()
+  }
+  if (json) {
+    return Result.Error({
+      message: textDiff,
+      expected,
+      value
+    })
+  }
+  return Result.Error(textDiff)
 }
 
 function repeat (c, n) {
@@ -50,12 +60,20 @@ function maybeEndNewLine (text) {
   }
 }
 
-function compareLongText (snapshotValue, value) {
+function compareLongText (snapshotValue, value, json) {
   if (snapshotValue === value) {
     return Result.Ok()
   }
 
   const textDiff = textDifference(snapshotValue, value, true)
+
+  if (json) {
+    return Result.Error({
+      message: textDiff,
+      expected: snapshotValue,
+      value
+    })
+  }
 
   const diff =
     '\n' +

@@ -32,6 +32,12 @@ describe('disparity', () => {
       const noColor = true
       snapshot(compareText(a, b, noColor).value)
     })
+
+    it('returns JSON diff', () => {
+      const noColor = true
+      const json = true
+      snapshot(compareText(a, b, noColor, json).value)
+    })
   })
 
   context('compareLongText', () => {
@@ -41,6 +47,11 @@ describe('disparity', () => {
 
     it('diffs long text', () => {
       compareLongText(a, b).map(raise).orElse(snapshot)
+    })
+
+    it('returns JSON diff', () => {
+      const json = true
+      snapshot(compareLongText(a, b, json).value)
     })
   })
 })

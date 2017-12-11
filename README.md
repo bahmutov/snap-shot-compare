@@ -51,6 +51,21 @@ snapshot difference
 */
 ```
 
+### Other option
+
+There are a few secondary options that might not be consistent across all
+comparison modes (open a GitHub issue if an unexpected behavior is found)
+
+```js
+compare({
+  expected,
+  value,
+  noColor, // strip ASCII color from diff message
+  json // return error result as JSON object with following properties
+  // {message, expected, value}
+})
+```
+
 ### Uses
 
 * [Folktale.Result][Folktale.Result]

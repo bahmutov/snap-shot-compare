@@ -35,3 +35,15 @@ Diff end
 --------
 `
 
+exports['disparity compareText returns JSON diff 1'] = {
+  "message": " line 1\n-line 2\n+line 2b\n line 3\n",
+  "expected": "line 1\nline 2\nline 3",
+  "value": "line 1\nline 2b\nline 3"
+}
+
+exports['disparity compareLongText returns JSON diff 1'] = {
+  "message": " line 1\n-line 2\n+line 2b\n line 3\n",
+  "expected": "line 1\nline 2\nline 3",
+  "value": "line 1\nline 2b\nline 3"
+}
+

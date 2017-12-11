@@ -18,15 +18,15 @@ const diffAsLongText = (s, t) =>
 
 const compareObjects = diff
 
-function compare ({ expected, value }) {
+function compare ({ expected, value, json, noColor }) {
   if (compareAsStrings(value, expected)) {
     if (diffAsLongText(value, expected)) {
-      return utils.compareLongText(expected, value)
+      return utils.compareLongText(expected, value, json)
     } else {
-      return utils.compareText(value, expected)
+      return utils.compareText(value, expected, noColor, json)
     }
   }
-  const diffed = compareObjects(expected, value)
+  const diffed = compareObjects(expected, value, json)
   if (diffed.changed) {
     return Result.Error(diffed.text)
   }
