@@ -68,7 +68,7 @@
     "license-checker": "13.0.3",
     "mocha": "3.5.0",
     "prettier-standard": "6.0.0",
-    "semantic-release": "^15.13.3",
+    "semantic-release": "15.13.12",
     "snap-shot-it": "2.0.0",
     "standard": "10.0.3"
   },
