@@ -69,7 +69,7 @@
     "mocha": "6.1.4",
     "prettier-standard": "9.1.1",
     "semantic-release": "15.13.12",
-    "snap-shot-it": "2.0.0",
+    "snap-shot-it": "7.4.3",
     "standard": "12.0.1"
   },
   "dependencies": {
