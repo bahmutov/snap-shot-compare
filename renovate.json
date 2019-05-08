@@ -10,5 +10,6 @@
   "timezone": "America/New_York",
   "schedule": [
     "every weekend"
-  ]
+  ],
+  "masterIssue": true
 }
