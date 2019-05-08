@@ -5,6 +5,7 @@ const is = require('check-more-types')
 const utils = require('./utils')
 const Result = require('folktale/result')
 const stripAnsi = require('strip-ansi')
+const debug = require('debug')('snap-shot-compare')
 
 const isMultiLineText = s => is.string(s) && s.includes('\n')
 const areStrings = (s, t) => is.string(s) && is.string(t)
@@ -22,12 +23,19 @@ const compareObjects = diff
 function compare ({ expected, value, json, noColor }) {
   if (compareAsStrings(value, expected)) {
     if (diffAsLongText(value, expected)) {
+      debug('compare as long text')
       return utils.compareLongText(expected, value, json)
     } else {
-      return utils.compareText(value, expected, noColor, json)
+      debug('compare as normal text')
+      debug('expected')
+      debug(expected)
+      debug('current value')
+      debug(value)
+      return utils.compareText(expected, value, noColor, json)
     }
   }
 
+  debug('comparing objects')
   const diffed = compareObjects(expected, value)
   if (!diffed.changed) {
     return Result.Ok()

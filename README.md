@@ -83,6 +83,14 @@ For longer text fragments, prints "expected" and "actual" values when showing th
 
 [Folktale.Result]: http://folktale.origamitower.com/api/v2.0.0/en/folktale.result.html
 
+## Debug
+
+To see verbose logs run with environment variable
+
+```
+DEBUG=snap-shot-compare
+```
+
 ### Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2017

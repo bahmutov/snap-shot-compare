@@ -73,11 +73,12 @@
     "standard": "10.0.3"
   },
   "dependencies": {
-    "strip-ansi": "4.0.0",
     "check-more-types": "2.24.0",
+    "debug": "4.1.1",
     "disparity": "2.0.0",
     "folktale": "2.0.1",
     "lazy-ass": "1.6.0",
+    "strip-ansi": "4.0.0",
     "variable-diff": "1.1.0"
   }
 }
