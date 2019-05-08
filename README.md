@@ -43,7 +43,7 @@ compare({
 }).orElse(console.log)
 // result has ANSI characters
 // use "strip-ansi" to remove if desired
-//*
+/*
 snapshot difference
 {
 - foo: "foo"
@@ -51,6 +51,8 @@ snapshot difference
 }
 */
 ```
+
+When showing the diff, `-` is for the lines removed, `+` means a line has been added.
 
 ### Other options
 
