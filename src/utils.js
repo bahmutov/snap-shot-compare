@@ -107,5 +107,6 @@ module.exports = {
   isUndefined,
   asResult,
   compareText,
-  compareLongText
+  compareLongText,
+  textDifference
 }

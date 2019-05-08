@@ -28,7 +28,10 @@ describe('snap-shot-compare', () => {
       expected: { foo: 'foo' },
       value: { bar: 'bar' }
     })
-    result.map(raise).orElse(x => asResult(stripAnsi(x))).map(snapshot)
+    result
+      .map(raise)
+      .orElse(x => asResult(stripAnsi(x)))
+      .map(snapshot)
   })
 
   it('works for different objects with json option', () => {
@@ -37,7 +40,10 @@ describe('snap-shot-compare', () => {
       value: { bar: 'bar' },
       json: true
     })
-    result.map(raise).orElse(x => asResult(stripAnsi(x))).map(snapshot)
+    result
+      .map(raise)
+      .orElse(x => asResult(stripAnsi(x)))
+      .map(snapshot)
   })
 
   it('works for different objects with noColor option', () => {
