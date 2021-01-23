@@ -75,7 +75,7 @@
   "dependencies": {
     "check-more-types": "2.24.0",
     "debug": "4.1.1",
-    "disparity": "3.0.0",
+    "disparity": "3.2.0",
     "folktale": "2.3.2",
     "lazy-ass": "1.6.0",
     "strip-ansi": "5.2.0",
