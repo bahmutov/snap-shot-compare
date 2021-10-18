@@ -78,7 +78,7 @@
     "disparity": "3.2.0",
     "folktale": "2.3.2",
     "lazy-ass": "1.6.0",
-    "strip-ansi": "5.2.0",
+    "strip-ansi": "7.0.1",
     "variable-diff": "1.1.0"
   }
 }
